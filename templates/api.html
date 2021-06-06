@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>213 Movies</title>
+    <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='bootstrap.min.css') }}"
+    />
+    <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='mdb.dark.min.css') }}"
+    />
+    <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='all.min.css') }}"
+    />
+</head>
+<body>
+<header>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">213 Movies</a>
+            <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-mdb-toggle="collapse"
+                    data-mdb-target="#navbarExample01"
+                    aria-controls="navbarExample01"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+            >
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarExample01">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Search</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/browse">Browse</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/top">Top Rated</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/api">API</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="https://github.com/crackhub-dev/movie-script" target="_blank">GitHub</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar -->
+</header>
+    <div class="container">
+        <h2>Auto-Embed Movie API</h2>
+        <h3>URL: <code>/api/player?id=</code>{tmdb id}</h3>
+        <h3>Method: <code>GET</code></h3>
+        <p>This player has 6 Sources, 2embed, APIMDB, DBGO, Streamtape, VidSrc and Multi</p>
+        <p><code>?id=</code> parameter is required, you can get that id at <a href="https://themoviedb.org" target="_blank">TheMovieDB</a></p>
+        <h5><a href="/api/player?id=10776">Example Player</a></h5>
+    </div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>213 Movies | An Error Has Occurred</title>
+    <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='bootstrap.min.css') }}"
+    />
+    <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='mdb.dark.min.css') }}"
+    />
+    <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='all.min.css') }}"
+    />
+</head>
+<body>
+<header>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">213 Movies</a>
+            <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-mdb-toggle="collapse"
+                    data-mdb-target="#navbarExample01"
+                    aria-controls="navbarExample01"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+            >
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarExample01">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Search</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/browse">Browse</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/top">Top Rated</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/api">API</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="https://github.com/crackhub-dev/movie-script"
+                           target="_blank">GitHub</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar -->
+</header>
+<div class="container" style="text-align: center;">
+    <h1>Sorry! There has been an error while processing your request!</h1>
+    <h5>Error Message: <code>{{ msg }}</code></h5>
+    <h5>Error Code: <code>{{ code }}</code></h5>
+    <a href="/">
+        <button class="btn btn-primary">Return Home</button>
+    </a>
+</div>
+</div>
+<footer
+        class="bg-dark text-center"
+        style="position: fixed; bottom: 0; width: 100%"
+>
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        2021 - Code by crackhub213
+    </div>
+</footer>
+<!-- Footer -->
+<script src="{{ url_for('static', filename='mdb.min.js') }}"></script>
+</body>
+</html>

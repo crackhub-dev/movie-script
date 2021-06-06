@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>213 Movies | Search Results for {{ query }}</title>
+    <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='bootstrap.min.css') }}"
+    />
+    <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='mdb.dark.min.css') }}"
+    />
+    <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='all.min.css') }}"
+    />
+</head>
+<body>
+<header>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">213 Movies</a>
+            <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-mdb-toggle="collapse"
+                    data-mdb-target="#navbarExample01"
+                    aria-controls="navbarExample01"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+            >
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarExample01">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Search</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/browse">Browse</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/top">Top Rated</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/api">API</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="https://github.com/crackhub-dev/movie-script"
+                           target="_blank">GitHub</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar -->
+</header>
+<style>
+    img {
+        background: url('../static/default.png') no-repeat;
+    }
+
+</style>
+<div class="container">
+    <div class="movie row">
+        {% for movie in range(number) %}
+            <div class="col-lg-2 col-md-3 col-sm-5">
+                <div class="card h-1">
+                    <a href="/view/movie/{{ tmdb_ids[movie] }}" class="ripple"
+                    >
+                        <img
+                                class="card-img-top img-fluid rounded"
+                                src="https://image.tmdb.org/t/p/original{{ posters[movie] }}"
+                                alt="{{ titles[movie] }}"
+                                onerror="this.onerror=null; this.src='../static/default.png'"
+                        /></a>
+                    <div class="card-body">
+                        <h6 class="card-title">
+                            <a href="/view/movie/{{ tmdb_ids[movie] }}">{{ titles[movie] }}</a>
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+</div>
+<script>
+    function nextPage() {
+        let searchParams = new URLSearchParams(window.location.search);
+        var nextPage = searchParams.get('p');
+        console.log(nextPage++)
+        searchParams.set("p", nextPage);
+        window.location.search = searchParams.toString();
+
+    }
+
+    function prevPage() {
+        let searchParams = new URLSearchParams(window.location.search);
+        var nextPage = searchParams.get('p');
+        console.log(nextPage--)
+        searchParams.set("p", nextPage);
+        window.location.search = searchParams.toString();
+    }
+</script>
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        <li class="page-item">
+            <a class="page-link" href="#" onclick="prevPage()" id="page-num">Previous Page</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="/results?q={{ query }}&p=1" id="page-num-1">1</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="/results?q={{ query }}&p=2" id="page-num-2">2</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="/results?q={{ query }}&p=3" id="page-num-3">3</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="/results?q={{ query }}&p=4" id="page-num-4">4</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="/results?q={{ query }}&p=5" id="page-num-5">5</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="/results?q={{ query }}&p=6" id="page-num-6">6</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="/results?q={{ query }}&p=7" id="page-num-7">7</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="/results?q={{ query }}&p=8" id="page-num-8">8</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="/results?q={{ query }}&p=9" id="page-num-9">9</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="/results?q={{ query }}&p=10" id="page-num-10">10</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="#" onclick="nextPage()" id="page-num">Next Page</a>
+        </li>
+    </ul>
+
+</nav>
+<footer
+        class="bg-dark text-center"
+
+>
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        2021 - Code by crackhub213
+    </div>
+</footer>
+<script src="{{ url_for('static', filename='mdb.min.js') }}"></script>
+</body>
+</html>
