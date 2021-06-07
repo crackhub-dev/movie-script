@@ -9,8 +9,6 @@ api_key = 'YOUR_API_KEY_HERE'
 
 @app.route('/view/movie/<id>')
 def movie(id):
-    base_url = "https://image.tmdb.org/t/p/original/"
-    link = "https://www.2embed.ru/embed/tmdb/movie?id=" + id
     tmdb_id = id
     imdb_req = requests.get(
         f'http://api.themoviedb.org/3/movie/{id}/external_ids?api_key={api_key}').json()
@@ -27,7 +25,7 @@ def movie(id):
     else:
         year = f'({rls_year})'
     tagline = resp['tagline']
-    return render_template('movie.html', link=link, title=title, tmdb_id=tmdb_id, movieDesc=movieDesc, year=year,
+    return render_template('movie.html', title=title, tmdb_id=tmdb_id, movieDesc=movieDesc, year=year,
                            tagline=tagline, imdb_id=imdb_id)
 
 
