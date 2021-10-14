@@ -40,7 +40,7 @@
 
 <body>
     <div id="bg">
-        <img src="{{ movie_bg }}" alt="">
+        <img src="{{ tv_bg }}" alt="">
     </div>
     <header>
         <!-- Navbar -->
@@ -48,8 +48,8 @@
             <div class="container-fluid">
                 <a class="navbar-brand" href="/">MoviesHub</a>
                 <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01" aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fas fa-bars"></i>
-                </button>
+                        <i class="fas fa-bars"></i>
+                    </button>
                 <div class="collapse navbar-collapse" id="navbarExample01">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item dropdown">
@@ -112,108 +112,33 @@
             <a href="https://ublockorigin.com/" target="_blank">uBlock Origin</a>) enabled, the video hosts have many ads!
         </p>
         <h1><b>{{ title }}</b> {{ year }}</h1>
-        <h6>Duration: {{ movie_runtime }}</h6>
-        <h6>Rating: {{ movie_rating }}</h6>
-        <h6>Overview: {{ movie_overview }}</h6>
+        <h6>Average Episode Duration: {{ tv_runtime }}</h6>
+        <h6>Rating: {{ tv_rating }}</h6>
+        <h6>Overview: {{ tv_overview }}</h6>
         <br>
-        <!-- <ul class="nav nav-tabs mb-3" id="tabs" role="tablist">
-        <li class="nav-item" role="presentation">
-            <button
-                    class="nav-link active"
-                    id="2Embed"
-                    data-mdb-toggle="tab"
-                    data-mdb-target="#server1"
-                    type="button"
-                    role="tab"
-                    aria-controls="2Embed"
-                    aria-selected="true"
-            >
-                2Embed
-            </button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button
-                    class="nav-link"
-                    id="apimdb"
-                    data-mdb-toggle="tab"
-                    data-mdb-target="#server2"
-                    type="button"
-                    role="tab"
-                    aria-controls="apimdb"
-                    aria-selected="true"
-            >
-                APIMDB
-            </button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button
-                    class="nav-link"
-                    id="dbgo"
-                    data-mdb-toggle="tab"
-                    data-mdb-target="#server3"
-                    type="button"
-                    role="tab"
-                    aria-controls="dbgo"
-                    aria-selected="true"
-            >
-                DBGO
-            </button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button
-                    class="nav-link"
-                    id="st"
-                    data-mdb-toggle="tab"
-                    data-mdb-target="#server4"
-                    type="button"
-                    role="tab"
-                    aria-controls="st"
-                    aria-selected="true"
-            >
-                Streamtape
-            </button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button
-                    class="nav-link"
-                    id="vidsrc"
-                    data-mdb-toggle="tab"
-                    data-mdb-target="#server5"
-                    type="button"
-                    role="tab"
-                    aria-controls="vidsrc"
-                    aria-selected="true"
-            >
-                VidSRC
-            </button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button
-                    class="nav-link"
-                    id="multi"
-                    data-mdb-toggle="tab"
-                    data-mdb-target="#server6"
-                    type="button"
-                    role="tab"
-                    aria-controls="multi"
-                    aria-selected="true"
-            >
-                Multi
-            </button>
-        </li>
-    </ul> -->
-        <div class="tab-content" id="tabsContent">
-            <div class="tab-pane fade show active" id="server1" role="tabpanel" aria-labelledby="2Embed">
-                <iframe src="https://www.2embed.ru/embed/tmdb/movie?id={{ tmdb_id }}" frameborder="0" allowfullscreen="true" width="100%" height="700px" class="movie"></iframe>
+    </div>
+    <div class="container">
+        <div class="tv row">
+            {% for season in seasons %}
+            <div class="col-lg-2 col-md-3 col-sm-5">
+                <div class="card h-1">
+                    <a href="/view/tv/{{ tmdb_id }}/{{ season['season_number'] }}/1" class="ripple">
+                        <img class="card-img-top img-fluid rounded" src="https://image.tmdb.org/t/p/original{{ season['poster_path'] }}" alt="{{ season['season_name'] }}" onerror="this.onerror=null; this.src='/static/default.png'" /></a>
+                </div>
             </div>
-            <div class="text-center p-3">
-                <p>
-                    This application hosts no copyrighted content. All copyrighted content is hosted by unaffiliated third parties.
-                </p>
-                <p>Code by crackhub213 & modified by parnex</p>
-                <p>Powered by <img class="px-2" src="{{ url_for('static', filename='tmdb.svg') }}" style="width: 150px"></p>
-            </div>
-            <!-- <div
+
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+    <div class="text-center p-3">
+        <p>
+            This application hosts no copyrighted content. All copyrighted content is hosted by unaffiliated third parties.
+        </p>
+        <p>Code by crackhub213 & modified by parnex</p>
+        <p>Powered by <img class="px-2" src="{{ url_for('static', filename='tmdb.svg') }}" style="width: 150px"></p>
+    </div>
+    <!-- <div
                 class="tab-pane fade"
                 id="server2"
                 role="tabpanel"
@@ -288,14 +213,14 @@
                     class="movie"
             ></iframe>
         </div> -->
-        </div>
-        <style>
-            .movie-container {
-                position: relative;
-                overflow: hidden;
-                width: 100%;
-            }
-        </style>
+    </div>
+    <style>
+        .movie-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+    </style>
     </div>
     <!-- <div class="container" style="text-align: center">
     <button

@@ -79,12 +79,16 @@
     </style>
     <div class="container">
         <div class="movie row">
-            {% for movie in range(number) %}
+            {% for tv in range(number) %}
             <div class="col-lg-2 col-md-3 col-sm-5">
                 <div class="card h-1">
-                    <a href="/view/movie/{{ tmdb_ids[movie] }}" class="ripple">
-                        <img class="card-img-top img-fluid rounded" src="https://image.tmdb.org/t/p/original{{ posters[movie] }}" alt="{{ titles[movie] }}" onerror="this.onerror=null; this.src='../static/default.png'" /></a>
-
+                    <a href="/view/tv/{{ tmdb_ids[tv] }}" class="ripple">
+                        <img class="card-img-top img-fluid rounded" src="https://image.tmdb.org/t/p/original{{ posters[tv] }}" alt="{{ titles[tv] }}" onerror="this.onerror=null; this.src='../static/default.png'" /></a>
+                    <!-- <div class="card-body">
+                        <h6 class="card-title">
+                            <a href="/view/movie/{{ tmdb_ids[movie] }}">{{ titles[movie] }}</a>
+                        </h6>
+                    </div> -->
                 </div>
             </div>
             {% endfor %}

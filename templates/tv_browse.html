@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MoviesHub | Search Results for {{ query }}</title>
+    <title>MoviesHub</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='mdb.dark.min.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='all.min.css') }}" />
@@ -22,8 +22,8 @@
             <div class="container-fluid">
                 <a class="navbar-brand" href="/">MoviesHub</a>
                 <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01" aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-bars"></i>
-                    </button>
+                <i class="fas fa-bars"></i>
+            </button>
                 <div class="collapse navbar-collapse" id="navbarExample01">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item dropdown">
@@ -72,24 +72,24 @@
         </nav>
         <!-- Navbar -->
     </header>
-    <style>
-        img {
-            background: url('../static/default.png') no-repeat;
-        }
-    </style>
+    <p class="fs-1" style="text-align: center">Trending TV Shows</p>
     <div class="container">
-        <div class="movie row">
-            {% for movie in range(number) %}
+        <div class="row">
+            {% for movie in range(0, 20) %}
             <div class="col-lg-2 col-md-3 col-sm-5">
-                <div class="card h-1">
-                    <a href="/view/movie/{{ tmdb_ids[movie] }}" class="ripple">
-                        <img class="card-img-top img-fluid rounded" src="https://image.tmdb.org/t/p/original{{ posters[movie] }}" alt="{{ titles[movie] }}" onerror="this.onerror=null; this.src='../static/default.png'" /></a>
-
+                <div class="card h-1 mb-2">
+                    <a href="/view/tv/{{ movie_ids[movie] }}" title="{{ title }}" class="ripple"><img class="card-img-top img-fluid rounded" title="{{ title }}" src="https://image.tmdb.org/t/p/original{{ posters[movie] }}" alt="{{ title }}" width="1500px" height="2250px" onerror="this.onerror=null; this.src='../static/default.png'"
+                        /></a>
+                    <!-- <div class="card-body">
+                        <h6 class="card-title">
+                            <a href="/view/movie/{{ movie_ids[movie] }}"></a>
+                        </h6>
+                    </div> -->
                 </div>
             </div>
+
             {% endfor %}
         </div>
-    </div>
     </div>
     <script>
         function nextPage() {
@@ -115,34 +115,34 @@
                 <a class="page-link" href="#" onclick="prevPage()" id="page-num">Previous Page</a>
             </li>
             <li class="page-item">
-                <a class="page-link" href="/results?q={{ query }}&p=1" id="page-num-1">1</a>
+                <a class="page-link" href="/browse/tv?p=1" id="page-num-1">1</a>
             </li>
             <li class="page-item">
-                <a class="page-link" href="/results?q={{ query }}&p=2" id="page-num-2">2</a>
+                <a class="page-link" href="/browse/tv?p=2" id="page-num-2">2</a>
             </li>
             <li class="page-item">
-                <a class="page-link" href="/results?q={{ query }}&p=3" id="page-num-3">3</a>
+                <a class="page-link" href="/browse/tv?p=3" id="page-num-3">3</a>
             </li>
             <li class="page-item">
-                <a class="page-link" href="/results?q={{ query }}&p=4" id="page-num-4">4</a>
+                <a class="page-link" href="/browse/tv?p=4" id="page-num-4">4</a>
             </li>
             <li class="page-item">
-                <a class="page-link" href="/results?q={{ query }}&p=5" id="page-num-5">5</a>
+                <a class="page-link" href="/browse/tv?p=5" id="page-num-5">5</a>
             </li>
             <li class="page-item">
-                <a class="page-link" href="/results?q={{ query }}&p=6" id="page-num-6">6</a>
+                <a class="page-link" href="/browse/tv?p=6" id="page-num-6">6</a>
             </li>
             <li class="page-item">
-                <a class="page-link" href="/results?q={{ query }}&p=7" id="page-num-7">7</a>
+                <a class="page-link" href="/browse/tv?p=7" id="page-num-7">7</a>
             </li>
             <li class="page-item">
-                <a class="page-link" href="/results?q={{ query }}&p=8" id="page-num-8">8</a>
+                <a class="page-link" href="/browse/tv?p=8" id="page-num-8">8</a>
             </li>
             <li class="page-item">
-                <a class="page-link" href="/results?q={{ query }}&p=9" id="page-num-9">9</a>
+                <a class="page-link" href="/browse/tv?p=9" id="page-num-9">9</a>
             </li>
             <li class="page-item">
-                <a class="page-link" href="/results?q={{ query }}&p=10" id="page-num-10">10</a>
+                <a class="page-link" href="/browse/tv?p=10" id="page-num-10">10</a>
             </li>
             <li class="page-item">
                 <a class="page-link" href="#" onclick="nextPage()" id="page-num">Next Page</a>
@@ -156,6 +156,7 @@
             <p>Powered by <img class="px-2" src="{{ url_for('static', filename='tmdb.svg') }}" style="width: 150px"></p>
         </div>
     </footer>
+    <!-- Footer -->
     <script src="{{ url_for('static', filename='mdb.min.js') }}"></script>
 </body>
 

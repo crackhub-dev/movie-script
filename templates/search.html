@@ -1,87 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>213 Movies | Search</title>
-    <link
-            rel="stylesheet"
-            href="{{ url_for('static', filename='bootstrap.min.css') }}"
-    />
-    <link
-            rel="stylesheet"
-            href="{{ url_for('static', filename='mdb.dark.min.css') }}"
-    />
-    <link
-            rel="stylesheet"
-            href="{{ url_for('static', filename='all.min.css') }}"
-    />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MoviesHub | Search</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='mdb.dark.min.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='all.min.css') }}" />
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
 </head>
+
 <body>
-<header>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">213 Movies</a>
-            <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-mdb-toggle="collapse"
-                    data-mdb-target="#navbarExample01"
-                    aria-controls="navbarExample01"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-            >
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarExample01">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Search</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/browse">Browse</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/top">Top Rated</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/api">API</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="https://github.com/crackhub-dev/movie-script"
-                           target="_blank">GitHub</a>
-                    </li>
-                </ul>
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">MoviesHub</a>
+                <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01" aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                <div class="collapse navbar-collapse" id="navbarExample01">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-film"></i> Movies
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li class="">
+                                    <a class="dropdown-item" href="/search"><i class="fas fa-search"></i> Search Movies</a>
+                                </li>
+                                <li class="">
+                                    <a class="dropdown-item" href="/browse"><i class="fas fa-fire"></i> Browse Popular Movies</a>
+                                </li>
+                                <li class="">
+                                    <a class="dropdown-item" href="/top"><i class="fas fa-star"></i> Top Rated Movies</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-tv"></i> TV Shows
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li class="">
+                                    <a class="dropdown-item" href="/search/tv"><i class="fas fa-search"></i> Search TV Shows</a>
+                                </li>
+                                <li class="">
+                                    <a class="dropdown-item" href="/browse/tv"><i class="fas fa-fire"></i> Browse Popular TV Shows</a>
+                                </li>
+                                <li class="">
+                                    <a class="dropdown-item" href="/top/tv"><i class="fas fa-star"></i> Top Rated TV Shows</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/api">API</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="https://github.com/crackhub-dev/movie-script" target="_blank">GitHub</a>
+                        </li>
+
+                    </ul>
+
+                </div>
             </div>
+        </nav>
+        <!-- Navbar -->
+    </header>
+    <div class="container">
+        <div class="container text-center">
+            <h1>MoviesHub</h1>
+            <form action="/results">
+                <div class="form-outline form-white">
+                    <input type="text" id="q" name="q" class="form-control form-control-lg mb-5 mt-5" placeholder="The Godfather" required />
+                    <label for="movie" class="form-label">Enter Any Movie Name</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+            <a href="/browse">
+                <button class="btn btn-lg btn-primary mt-5">Browse Popular Movies</button>
+            </a>
         </div>
-    </nav>
-    <!-- Navbar -->
-</header>
-<div class="container">
-    <div
-            class="container text-center"
-    >
-        <h1>213 Movies</h1>
-        <form action="/results">
-            <div class="form-outline form-white">
-                <input
-                        type="text"
-                        id="q"
-                        name="q"
-                        class="form-control form-control-lg mb-5 mt-5"
-                        placeholder="The Godfather"
-                        required
-                />
-                <label for="movie" class="form-label">Enter Any Movie Name</label>
-            </div>
-            <button type="submit" class="btn btn-primary">Search</button>
-        </form>
-        <a href="/browse">
-            <button class="btn btn-lg btn-primary mt-5">Browse Popular Movies</button>
-        </a>
-    </div>
-    <script src="{{ url_for('static', filename='mdb.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='mdb.min.js') }}"></script>
 </body>
+
 </html>
