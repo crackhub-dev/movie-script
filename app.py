@@ -259,7 +259,7 @@ def s_tv(id, s, e):
         if len(seasondicts) == 1:
             current_season = int(s) - 1
         else:
-            current_season = int(s)
+            current_season = int(s) - 1
 
         ep_count = seasons_array[current_season] + 1
         next_season = current_season + 1
